@@ -2,14 +2,13 @@ namespace Playground
 {
     using Playground.Extensions;
 
-    using System;
-
     public static class Program
     {
         public static void Main()
         {
-            var s = "lmnA";
+            var s = "nice";
             var permutations = Playground.Utils.Permutation.Permutations(s);
+            permutations.WriteLine();
         }
     }
 }
