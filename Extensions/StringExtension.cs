@@ -6,16 +6,6 @@ namespace Playground.Extensions
 
     public static class StringExtension
     {
-        public static void WriteLine(this IEnumerable<string> strings)
-        {
-            foreach (var s in strings)
-            {
-                Console.WriteLine(s);
-            }
-
-            Console.WriteLine();
-        }
-
         public static string Compress(this string s)
         {
             var length = 0;

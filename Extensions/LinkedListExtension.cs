@@ -36,21 +36,6 @@ namespace Playground.Extensions
             }
         }
 
-        public static void WriteLine<T>(this LinkedList<T> list)
-        {
-            if (list != null)
-            {
-                var current = list.First;
-                while (current != null)
-                {
-                    Console.Write("{0}, ", current.Value);
-                    current = current.Next;
-                }
-                
-                Console.WriteLine();
-            }
-        }
-
         private static void SwapValue<T>(LinkedListNode<T> node1, LinkedListNode<T> node2)
         {
             var value1 = node1.Value;
