@@ -1,18 +1,15 @@
 namespace Playground
 {
     using System;
-    using System.Collections.Generic;
-    using Playground.Extensions;
-    using Playground.DynamicProgramming;
+    using Playground.Problems;
 
     public static class Program
     {
         public static void Main()
         {
-            var inputSet = new[] {1,2,3,4,5,6,7,60,-6,-5,-4,-3,-2,-1};
-            var subSet = new SubSetSum();
-            var sum = 10;
-            subSet.SubSetWithSum(inputSet, sum).WriteLine();
+            var binaryString = "111101111010010110111";
+            var n = Convert.ToInt32(binaryString, 2);
+            var result = FlipBit.GetLongestSequenceOfOnesWithSingleFlip(n);
         }
     }
 }
