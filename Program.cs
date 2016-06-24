@@ -7,20 +7,15 @@ namespace Playground
     {
         public static void Main()
         {
-            var binaryString = "111101111010010110111";
             bool loop = true;
+            int y = 2, x1 = 0, x2 = 3;
+            // This loop is simply helful in debugging as Visual Studio Code debugger 
+            // doesn't allow to move the executing statement.
             while (loop)
             {
-                var n = Convert.ToInt32(binaryString, 2);
-                var result = FlipBit.NextSmallestAndLargestWithSameOneBits(n);
-                var nextLargest = result.Item1;
-                var nextSmallest = result.Item2;
-                Console.WriteLine(n);
-                Console.WriteLine(Convert.ToString(n, 2));
-                Console.WriteLine(nextLargest);
-                Console.WriteLine(Convert.ToString(nextLargest, 2));
-                Console.WriteLine(nextSmallest);
-                Console.WriteLine(Convert.ToString(nextSmallest, 2));
+                var screen = new ScreenRenderer(240, 24);
+
+                screen.DrawLine(y, x1, x2);
             }
         }
     }
