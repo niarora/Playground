@@ -1,6 +1,5 @@
 namespace Playground.Leetcode
 {
-    using System;
     using System.Collections.Generic;
 
     public static class CombinationSum
@@ -8,7 +7,6 @@ namespace Playground.Leetcode
         // Problem number 377. https://leetcode.com/problems/combination-sum-iv/
         public static int CombinationSum4(int[] nums, int target)
         {
-            //Array.Sort(nums);
             var count = 0;
             var countOfInterimSums = new Dictionary<int, int>();
             count = Helper(nums, target, countOfInterimSums);
