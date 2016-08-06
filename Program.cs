@@ -9,8 +9,8 @@ namespace Playground
         {
             var sw = new Stopwatch();
             sw.Start();
-            var nums = new int[] { 2,3,5 };
-            var sum = 40;
+            var nums = new int[] { 3,1,2,4,5,6,7,8,9,10};
+            var sum = 32;
             var result = Leetcode.CombinationSum.CombinationSum4(nums, sum);            
             sw.Stop();
             Console.WriteLine("Result: {0}", result.ToString("#,#"));

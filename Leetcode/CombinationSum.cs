@@ -8,52 +8,48 @@ namespace Playground.Leetcode
         // Problem number 377. https://leetcode.com/problems/combination-sum-iv/
         public static int CombinationSum4(int[] nums, int target)
         {
-            Array.Sort(nums);
+            //Array.Sort(nums);
             var count = 0;
             var countOfInterimSums = new Dictionary<int, int>();
-            Helper(nums, target, 0, ref count, countOfInterimSums);
+            count = Helper(nums, target, countOfInterimSums);
             return count;
         }
 
 
-        private static void Helper(
-            int[] array,
-            int t,
-            int sumSoFar,
-            ref int count,
-            Dictionary<int, int> countOfInterimSums)
+        private static int Helper(
+            int[] nums,
+            int target,
+            Dictionary<int, int> cache)
         {
-            if (countOfInterimSums.ContainsKey(sumSoFar))
+            if (target == 0)
             {
-                count += countOfInterimSums[sumSoFar];
-                return;
+                return 1;
             }
 
-            var countForSumSoFar = count;
-            foreach (var n in array)
+            if (cache.ContainsKey(target))
             {
-                var sum = n + sumSoFar;
+                return cache[target];
+            }
 
-                if (sum == t)
+            var count = 0;
+            foreach (var n in nums)
+            {
+                if (n > target)
                 {
-                    count++;
-                    break;
-                }
-
-                else if (sum > t)
-                {
-                    break;
                 }
                 else
                 {
-                    Helper(array, t, sum, ref count, countOfInterimSums);
+                    var innerCount = Helper(nums, target - n, cache);
+                    if (innerCount != 0)
+                    {
+                        count += innerCount;
+                    }
                 }
             }
 
-            if (!countOfInterimSums.ContainsKey(sumSoFar))
-            {
-                countOfInterimSums[sumSoFar] = count - countForSumSoFar;
-            }
+            cache[target] = count;
+
+            return count;
         }
     }
 }
