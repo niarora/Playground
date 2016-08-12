@@ -6,7 +6,7 @@ namespace Playground.Extensions
 
     public static class EnumerableExtension
     {
-        public static void WriteLine<T>(this IEnumerable<T> items)
+        public static void Print<T>(this IEnumerable<T> items)
         {
             if (items == null)
             {
