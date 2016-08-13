@@ -12,6 +12,8 @@ namespace Playground
             TestRemovingDuplicates(new int[] { 1, 1, 2, 2 });
             TestRemovingDuplicates(new int[] { 2, 2, 2 });
             TestRemovingDuplicates(new int[] { });
+            TestRemovingDuplicates(new int[] { 1 });
+            TestRemovingDuplicates(new int[] { 1,1 });
         }
 
         private static void TestRemovingDuplicates<T>(IEnumerable<T> testInput) where T : IEquatable<T>
