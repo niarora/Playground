@@ -5,6 +5,30 @@ namespace Playground.Extensions
 
     public static class LinkedListExtension
     {
+
+        public static void RemoveDuplicates<T>(this LinkedList<T> sortedList) where T : IEquatable<T>
+        {
+            LinkedListNode<T> root, cur;
+            if (sortedList == null || (root = sortedList.First) == null || (cur = root.Next) == null)
+            {
+                return;
+            }
+
+            while (cur != null)
+            {
+                if (root.Value.Equals(cur.Value))
+                {
+                    sortedList.Remove(cur);
+                }
+                else
+                {
+                    root = root.Next;
+                }
+                
+                cur = root.Next;
+            }
+        }
+
         public static void Partition<T>(this LinkedList<T> list, T key) where T : IComparable<T>
         {
             var length = 0;
