@@ -8,24 +8,22 @@ namespace Playground.Extensions
 
         public static void RemoveDuplicates<T>(this LinkedList<T> sortedList) where T : IEquatable<T>
         {
-            LinkedListNode<T> root, cur;
-            if (sortedList == null || (root = sortedList.First) == null || (cur = root.Next) == null)
+            LinkedListNode<T> current;
+            if (sortedList == null || (current = sortedList.First) == null || current.Next == null)
             {
                 return;
             }
 
-            while (cur != null)
+            while (current.Next != null)
             {
-                if (root.Value.Equals(cur.Value))
+                if (current.Value.Equals(current.Next.Value))
                 {
-                    sortedList.Remove(cur);
+                    sortedList.Remove(current.Next); // Equivalent to current.Next = current.Next.Next.
                 }
                 else
                 {
-                    root = root.Next;
+                    current = current.Next;
                 }
-                
-                cur = root.Next;
             }
         }
 
