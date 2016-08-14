@@ -5,7 +5,37 @@ namespace Playground.Extensions
 
     public static class LinkedListExtension
     {
+        public static LinkedList<int> SumLists(this LinkedList<int> op1, LinkedList<int> op2)
+        {
+            if (op1 == null || op1.Count == 0)
+            {
+                return op2;
+            }
 
+            if (op2 == null || op2.Count == 0)
+            {
+                return op1;
+            }
+
+            var sum = new LinkedList<int>();
+            var op1Node = op1.First;
+            var op2Node = op2.First;
+            var carry = 0;
+
+            while (carry == 1 || (op1Node != null || op2Node != null))
+            {
+                var digit = carry
+                + (op1Node?.Value ?? 0)
+                + (op2Node?.Value ?? 0);
+                carry = digit / 10;
+                digit %= 10;
+                sum.AddLast(digit);
+                op1Node = op1Node?.Next;
+                op2Node = op2Node?.Next;
+            }
+
+            return sum;
+        }
         public static void RemoveDuplicates<T>(this LinkedList<T> sortedList) where T : IEquatable<T>
         {
             LinkedListNode<T> current;

@@ -2,30 +2,30 @@ namespace Playground
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using Playground.Extensions;
     public static class Program
     {
         public static void Main()
         {
-            TestRemovingDuplicates(new int[] { 1, 10, 3, 4, 5, 7, 8, 10, 123, 14, 1, 5, 5, 3, 15, 1, 123 });
-            TestRemovingDuplicates(new int[] { 1, 1, 2, 2 });
-            TestRemovingDuplicates(new int[] { 2, 2, 2 });
-            TestRemovingDuplicates(new int[] { });
-            TestRemovingDuplicates(new int[] { 1 });
-            TestRemovingDuplicates(new int[] { 1,1 });
+            Test(new int[] { 1, 0, 3, 4, 5, 7, 8 }, new int[] { 9, 9 });
+            Test(new int[] { }, new int[] { 1 });
+            Test(new int[] { 9, 9 }, new int[] { 9, 9, 9, 9, 9 });
+            Test(new int[] { 9, 9, 9, 9, 9 }, new int[] { 9, 9 });
+            Test(new int[] { }, new int[] { });
         }
 
-        private static void TestRemovingDuplicates<T>(IEnumerable<T> testInput) where T : IEquatable<T>
+        private static void Test(IEnumerable<int> op1, IEnumerable<int> op2)
         {
-            testInput = testInput.OrderBy(t => t);
-            var linkedList = new LinkedList<T>(testInput);
+            var op1List = new LinkedList<int>(op1);
+            var op2List = new LinkedList<int>(op2);
             Console.WriteLine();
-            Console.WriteLine("Before removing dups: ");
-            linkedList.Print();
-            linkedList.RemoveDuplicates();
-            Console.WriteLine("After removing dups: ");
-            linkedList.Print();
+            Console.WriteLine("Operand 1: ");
+            op1List.Print();
+            Console.WriteLine("Operand 2: ");
+            op2List.Print();
+            var sum = op1List.SumLists(op2List);
+            Console.WriteLine("Sum of both operands: ");
+            sum.Print();
             Console.WriteLine();
         }
     }
