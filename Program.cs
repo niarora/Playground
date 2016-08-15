@@ -1,26 +1,25 @@
 namespace Playground
 {
     using System;
-    using System.Linq;
     using Playground.Extensions;
     public static class Program
     {
         public static void Main()
         {
-            Test("2");
-            Test("97");
-            Test("3236986237");
+            var items = new int[] { 10, -90, 4, 6, 957, 317, 195619, 2, 5, 1, 15, 0 };
+            for (var i = 1; i <= items.Length; i++)
+            {
+                Test(items, i);
+                items = new int[] { 10, -90, 4, 6, 957, 317, 195619, 2, 5, 1, 15, 0 };
+            }
         }
 
-        private static void Test(string digits)
+        private static void Test(int[] items, int kth)
         {
-            var mnemonics = new Problems.Mnemonics();
-            var result = mnemonics.ComputeMnemonics(digits);
-            Console.WriteLine("Input digits:");
-            digits.Print();
-            Console.WriteLine("All Mnemonics: ");
-            result.Print();
-            Console.WriteLine("Total Mnemonics: {0}", result.Count());
+            var kthLargest = items.KthLargest(kth);
+            Console.WriteLine("Input List:");
+            items.Print();
+            Console.WriteLine("{0}st/th Largest element: {1}", kth, kthLargest);
         }
     }
 }
